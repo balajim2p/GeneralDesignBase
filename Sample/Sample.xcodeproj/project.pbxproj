@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD9D173F27BE98AA00ABA72C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9D173E27BE98AA00ABA72C /* WebViewController.swift */; };
+		AD9D174227BE98B900ABA72C /* DesignBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9D174027BE98B900ABA72C /* DesignBundle.swift */; };
+		AD9D174327BE98B900ABA72C /* DesignBase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9D174127BE98B900ABA72C /* DesignBase.storyboard */; };
+		AD9D174527BE9AAC00ABA72C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9D174427BE9AAC00ABA72C /* ImagePicker.swift */; };
 		ADEE8AEF27BBD50B0011CBE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEE8AEE27BBD50B0011CBE9 /* AppDelegate.swift */; };
 		ADEE8AF127BBD50B0011CBE9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEE8AF027BBD50B0011CBE9 /* SceneDelegate.swift */; };
 		ADEE8AF327BBD50B0011CBE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEE8AF227BBD50B0011CBE9 /* ViewController.swift */; };
@@ -50,6 +54,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AD9D173E27BE98AA00ABA72C /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		AD9D174027BE98B900ABA72C /* DesignBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignBundle.swift; sourceTree = "<group>"; };
+		AD9D174127BE98B900ABA72C /* DesignBase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DesignBase.storyboard; sourceTree = "<group>"; };
+		AD9D174427BE9AAC00ABA72C /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		ADEE8AEB27BBD50B0011CBE9 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEE8AEE27BBD50B0011CBE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADEE8AF027BBD50B0011CBE9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +135,8 @@
 				ADEE8B0927BBD65D0011CBE9 /* DesignBase.h */,
 				ADEE8B1527BBD7660011CBE9 /* NetworkClass.swift */,
 				ADEE8B1727BBDA9C0011CBE9 /* DesignBase.swift */,
+				AD9D174127BE98B900ABA72C /* DesignBase.storyboard */,
+				AD9D174027BE98B900ABA72C /* DesignBundle.swift */,
 				ADEE8B1D27BBDE2B0011CBE9 /* Extensions */,
 				ADEE8B0A27BBD65D0011CBE9 /* DesignBase.docc */,
 			);
@@ -136,6 +146,8 @@
 		ADEE8B1D27BBDE2B0011CBE9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AD9D174427BE9AAC00ABA72C /* ImagePicker.swift */,
+				AD9D173E27BE98AA00ABA72C /* WebViewController.swift */,
 				ADEE8B1B27BBDE260011CBE9 /* View-Extension.swift */,
 				ADEE8B1E27BBDED80011CBE9 /* String-Extension.swift */,
 				ADEE8B2027BBE14C0011CBE9 /* UIColor-Extension.swift */,
@@ -246,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD9D174327BE98B900ABA72C /* DesignBase.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,9 +281,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADEE8B1C27BBDE260011CBE9 /* View-Extension.swift in Sources */,
+				AD9D174227BE98B900ABA72C /* DesignBundle.swift in Sources */,
 				ADEE8B2127BBE14C0011CBE9 /* UIColor-Extension.swift in Sources */,
+				AD9D174527BE9AAC00ABA72C /* ImagePicker.swift in Sources */,
 				ADEE8B0B27BBD65D0011CBE9 /* DesignBase.docc in Sources */,
 				ADEE8B1627BBD7660011CBE9 /* NetworkClass.swift in Sources */,
+				AD9D173F27BE98AA00ABA72C /* WebViewController.swift in Sources */,
 				ADEE8B1827BBDA9C0011CBE9 /* DesignBase.swift in Sources */,
 				ADEE8B1F27BBDED80011CBE9 /* String-Extension.swift in Sources */,
 			);

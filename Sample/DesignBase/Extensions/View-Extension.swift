@@ -8,37 +8,78 @@
 import Foundation
 import UIKit
 
-/*UIView extension class*/
-public extension UIView {
+public extension UIViewController {
     
-    /*Set Corner Radius for view*/
-    func setCornerRadius(radius : CGFloat = 10) {
-        self.layer.cornerRadius = radius
+    /*Dismiss or Pop back*/
+    func dismissVC(){
+        if (self.presentingViewController != nil){
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            _ = navigationController?.popViewController(animated: true)
+        }
     }
     
-    /*Set Border With Radius for view*/
-    func setRoundedBorder(radius : CGFloat = 10, color : CGColor, width : CGFloat = 1) {
-        layer.cornerRadius = radius
-        layer.borderWidth = width
-        layer.borderColor = color
+    func delay(interval: TimeInterval, closure: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
+            closure()
+        }
     }
     
-    /*Set Corner for selected Edge*/
-    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
+    func alertWithNoAction(title : String = "Coming Soon ...", delay : Int = 2){
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        self.present(alertController, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(delay)){
+                alertController.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+}
+
+/** Extension to show Generic Message Alert Controller throughout the App **/
+public extension UIViewController{
+    enum AlertTitle: String{
+        case Success = "Success"
+        case Error = "Error"
+        case Alert = "Alert"
     }
     
-    /*Set Circle Radius*/
-    func circleRadius(){
-        self.layer.cornerRadius = self.frame.size.height/2
+    func showMessageAlert(title: String = AlertTitle.Alert.rawValue, message: String?, showRetry: Bool = true, retryTitle: String? = nil, showCancel: Bool = true, cancelTitle: String? = nil, onRetry: (() -> ())?, onCancel: (() -> ())?){
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            if showRetry{
+                alertController.addAction(UIAlertAction(title: retryTitle ?? "Retry", style: .default, handler: { (retry) in
+                    guard let onRetry = onRetry else{
+                        return
+                    }
+                    onRetry()
+                }))
+            }
+            if showCancel{
+                alertController.addAction(UIAlertAction(title: cancelTitle ?? "Cancel", style: .cancel, handler: { (cancel) in
+                    guard let onCancel = onCancel else{
+                        return
+                    }
+                    onCancel()
+                }))
+            }
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
-    
-    /*Dismiss the custom view*/
-    func dismissView(onCompletion completion : (()->Void)?){
-        self.removeFromSuperview()
-        completion?()
+}
+
+/* Open web view Viewcontroller*/
+public extension UIViewController {
+    func openWebViewVC(url:String,title:String){
+        let viewController = UIStoryboard(name: "DesignBase", bundle: DesignBundle.shared.currentBundle).instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        if url.isEmpty{
+            self.alertWithNoAction(title:"No data to load")
+        }
+        else
+        {
+            viewController.vcTitle = title
+            viewController.getURl = url
+            self.present(viewController, animated: true, completion: nil)
+        }
+        
     }
 }
