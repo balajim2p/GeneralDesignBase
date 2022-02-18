@@ -7,6 +7,8 @@
 
 import UIKit
 import DesignBase
+import Alamofire
+import ObjectMapper
 
 class ViewController: UIViewController {
     
@@ -47,6 +49,27 @@ class ViewController: UIViewController {
     @IBAction func webViewAction(_ sender: UIButton){
         DesignBase.shared.openWebViewVC(url: "https://www.google.co.in/", title: "WebView",from:self)
     }
+    
+    @IBAction func APIAction(_ sender: UIButton){
+        self.API()
+    }
+    
+    func API(){
+        M2PWebServiceClass.shared.callAPI(type: UserModel.self,
+                                          with: "api/users",
+                                          method: .get,
+                                          parameter: nil,
+                                          headers: nil,
+                                          URL: "https://reqres.in/" ,
+                                          completion: { (response, error, code, headLessResponse) in
+
+            print(response?.data?.first ?? [])
+            if let imgURL = URL(string: response?.data?.first?.avatar ?? ""){
+                self.profileView.load(url:imgURL)
+            }
+                
+        })
+    }
 }
 
 
@@ -62,3 +85,5 @@ extension ViewController: ImagePickerDelegate {
         }
     }
 }
+
+
